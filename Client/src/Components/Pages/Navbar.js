@@ -1,8 +1,14 @@
-import React ,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../Styles/Navbar.css";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 function Navbar() {
+function handleLogout(){
+  localStorage.removeItem('currentUser')
+  window.location.href="/login"
+}
+
   const location = useLocation();
   const user = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -12,8 +18,7 @@ function Navbar() {
         <li
           className="linklogii"
           class="nav-item"
-          style={{ listStyle: "none", marginTop: "3px" }}
-        >
+          style={{ listStyle: "none", marginTop: "7px" }}>
           <Link
             className="linklogo"
             to="/"
@@ -22,13 +27,10 @@ function Navbar() {
               alignItems: "center",
               alignContent: "center",
               fontFamily: "cursive",
-
+              color: "black",
               marginLeft: "20px",
               listStyle: "none !imporatant",
-            }}
-            class="nav-link"
-            aria-current="page"
-          >
+            }} >
             SleepSafari
           </Link>
         </li>
@@ -40,9 +42,8 @@ function Navbar() {
                 to="/destinations"
                 style={{ textDecoration: "none" }}
                 class="nav-link"
-                className={`nav-link ${
-                  location.pathname === "/destinations" ? "active" : ""
-                }`}
+                className={`nav-link ${location.pathname === "/destinations" ? "active" : ""
+                  }`}
               >
                 Destinations
               </Link>
@@ -52,9 +53,8 @@ function Navbar() {
                 to="/hostels"
                 style={{ textDecoration: "none" }}
                 class="nav-link"
-                className={`nav-link ${
-                  location.pathname === "/hostels" ? "active" : ""
-                }`}
+                className={`nav-link ${location.pathname === "/hostels" ? "active" : ""
+                  }`}
               >
                 Hostels
               </Link>
@@ -64,9 +64,8 @@ function Navbar() {
                 to="/workations"
                 style={{ textDecoration: "none" }}
                 class="nav-link"
-                className={`nav-link ${
-                  location.pathname === "/workations" ? "active" : ""
-                }`}
+                className={`nav-link ${location.pathname === "/workations" ? "active" : ""
+                  }`}
               >
                 Workations
               </Link>
@@ -76,9 +75,8 @@ function Navbar() {
                 to="/membership"
                 style={{ textDecoration: "none" }}
                 class="nav-link"
-                className={`nav-link ${
-                  location.pathname === "/membership" ? "active" : ""
-                }`}
+                className={`nav-link ${location.pathname === "/membership" ? "active" : ""
+                  }`}
               >
                 Membership
               </Link>
@@ -88,24 +86,23 @@ function Navbar() {
                 to="/blogs"
                 style={{ textDecoration: "none" }}
                 class="nav-link"
-                className={`nav-link ${
-                  location.pathname === "/blogs" ? "active" : ""
-                }`}
+                className={`nav-link ${location.pathname === "/blogs" ? "active" : ""
+                  }`}
               >
                 Blogs
               </Link>
             </li>
             {user ? (
-            <><div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {user.data.currentUser.name}
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Bookings</a>
-              <a class="dropdown-item" href="#">Settings</a>
-              <a class="dropdown-item" href="#">Log-Out</a>
-            </div>
-          </div></> 
+              <><div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <FontAwesomeIcon style={{ marginRight: '13px' }} icon={faUser} />{user.data.currentUser.name}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Bookings</a>
+                  <a class="dropdown-item" href="#">Settings</a>
+                  <a class="dropdown-item" href="#" onClick={handleLogout}>Log-Out</a>
+                </div>
+              </div></>
             ) : (
               <>
                 <li>
@@ -116,9 +113,8 @@ function Navbar() {
                       color: "#9D9DF0 !important",
                     }}
                     class="nav-link"
-                    className={`nav-link ${
-                      location.pathname === "/login" ? "active" : ""
-                    }`}
+                    className={`nav-link ${location.pathname === "/login" ? "active" : ""
+                      }`}
                   >
                     Login
                   </Link>
