@@ -37,12 +37,7 @@
 
 
 
-/* .linkloi{
-    list-style: none;
-   
-    font-size: 35px;
-    margin-left: 30px;
-} */
+
 .link:hover{
     color: rgb(144, 100, 189);
 }
@@ -103,36 +98,11 @@
 
 }
 
-
-/* @media only screen and  (max-width:1200px){
-
-
-  .links{
-   
-   
-    gap: 1.5rem;
-    margin-left: 100PX;
-    font-size: 22px;
-    font-family: 'Poppins', sans-serif;
-    z-index: 999;
-    margin-top: 15px;
-    
-}
-
-  .Navbar{
-    height: 80px  ;
-   
-    padding: 5PX;
-    
-   
-}
-
-} */
 @media only screen and (min-width:1210px) {
   .links{
     display: flex;
     list-style: none;
-    gap: 4rem;
+    gap: 2rem;
     margin-left: 160PX;
     font-size: 22px;
     font-family: 'Poppins', sans-serif;
@@ -142,6 +112,24 @@
 }
 .nav-link{
   color: #9d9df0 !important;
+  font-size: 22px !important;
 }
-
+.Navbar{
+  height: 10vh  ;
+  width: 100% !important;
+  background-color: white;
+  box-shadow: 0px 21px 31px 3px rgba(0,0,0,0.1);
+  padding: 5PX;
+  display: flex;
+ 
+}
+.linklogo{
+  color: black !important;
+  margin-left: 20px !important;
+}
+.dropdown-toggle{
+  width: 160px !important;
+  border: 0px solid !important;
+  background-color: rgb(135, 129, 129) !important;
+}
 }

@@ -1,14 +1,25 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
 import "../Styles/Bookroom.css";
 import { Modal, Button, Carousel } from "react-bootstrap";
+
+
+
 export const Roomslist = ({ room }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
+
+
   return (
+    <div>
+         
+
+
     <div className="row boxshaows ">
       <div key={room._id} className="col-md-4">
         <img src={room.imageurls[0]} className="smallimghostel" />
@@ -49,6 +60,7 @@ export const Roomslist = ({ room }) => {
           </Button>
         </Modal.Footer>
       </Modal>
+    </div>
     </div>
   );
 };
