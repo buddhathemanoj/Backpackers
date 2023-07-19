@@ -3,11 +3,27 @@ import axios from "axios";
 import "../Styles/Bookroom.css";
 import { Roomslist } from "./Roomslist";
 import { Loader } from "./Loader";
+
+import moment from 'moment'
+import { DatePicker, Space } from 'antd';
+
 import { Error } from "@mui/icons-material";
+
+
+
 export const Bookroom = () => {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState();
   const [error, setError] = useState();
+  
+const { RangePicker } = DatePicker;
+
+function filterByDate(dates)
+{
+console.log(moment(dates[0]).format('DD-MM-YYYY'))
+console.log(moment(dates[1]).format('DD-MM-YYYY'))
+}
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -30,6 +46,11 @@ export const Bookroom = () => {
 
   return (
     <div>
+
+      
+<div style={{marginLeft:'12%'}} className="col-md-3 ">
+   <RangePicker  format='DD-MM-YYYY' onChange={filterByDate}/ >
+   </div>
       <div className="row  justify-content-center">
         {loading ? (
         <Loader/>
@@ -38,7 +59,11 @@ export const Bookroom = () => {
         ) : (
           rooms.map((room) => {
             return (
+
+              
               <div className="col-md-9 mt-5">
+
+
                 <Roomslist room={room} />
               </div>
             
