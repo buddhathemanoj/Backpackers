@@ -8,11 +8,11 @@ import Destinations from "../Pages/Destinations.tsx";
 import Blogs from "../Pages/Blogs";
 import Home from "../Pages/Home";
 import Membership from "../Pages/Membership";
-import { Login } from "@mui/icons-material";
-
+import { Login } from "../Userauth/Login"
 import { Agra } from "../Pages/Agra";
 import { Register } from "../Pages/Register.js";
 import { Bookingscreen } from "../Hostelrooms/Bookingscreen";
+import { Signup } from "../Userauth/Signup";
 function Routesmain (){
     return(
 <div>
@@ -20,7 +20,7 @@ function Routesmain (){
   <BrowserRouter>
     
         <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/home" element={<Home />} />
           <Route exact path="/destinations" element={<Destinations />} />
           <Route exact path="/hostels" element={<Hostels />} />
           <Route exact path="/workations" element={<Workations />} />
@@ -30,7 +30,8 @@ function Routesmain (){
           <Route exact path="/checkinagra" element={<Maincheckinagra />} />
           <Route exact path="/register" element={<Register />} />
           <Route path="/book/:roomid" element={<Bookingscreen />} />
-          <Route exact path="/login" element={<Loginform />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Signup />} />
          
 
 

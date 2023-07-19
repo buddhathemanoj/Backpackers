@@ -29,7 +29,7 @@ export const Bookingscreen = () => {
   }, [roomid]); // e roomid in the array to fetch data when it changes
 
   return (
-    <div>
+    <div style={{padding:'0 10%'}} className='m-5'>
       
       {loading ? (
         <Loader/>
@@ -39,14 +39,14 @@ export const Bookingscreen = () => {
         <div>
          
           {room && (
-            <div  className='row justify-content-center'>
+            <div  className='row justify-content-center mt-5 boxshaows '>
 
-            <div style={{paddingRight:'30px'}} className='col-md-5' >
+            <div style={{paddingRight:'30px'}} className='col-md-6' >
               <h1>{room.name}</h1>
               <img className='bigimgcaro' src={room.imageurls[0]}  />
               </div>
 
-              <div className='col-md-4 Deatails ' >
+              <div className='col-md-6 Deatails ' >
                 <div  >
 <br/>
 
@@ -64,7 +64,7 @@ export const Bookingscreen = () => {
     <h1>  Checkout Price</h1>
     <hr/>
  <p>Total Days:</p>
- <p>Rent per Day:</p>
+ <p>Rent per Day:{room.rentperday}</p>
  <p>Total Amount</p>
     </div>
     <div  >

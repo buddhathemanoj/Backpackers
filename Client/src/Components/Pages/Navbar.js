@@ -59,7 +59,14 @@ function Navbar() {
             <Link to="/blogs" style={{ textDecoration: 'none' }}  class="nav-link" className={`nav-link ${location.pathname === '/blogs' ? 'active' : ''}`}>
               Blogs
             </Link>
-          </li>
+             </li>
+            <li>
+            <Link to="/login" style={{ textDecoration: 'none' }}  class="nav-link" className={`nav-link ${location.pathname === '/login' ? 'active' : ''}`}>
+             Login
+            </Link>
+           </li>
+
+         
         </ul>
         </div>
       </nav>
