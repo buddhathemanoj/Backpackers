@@ -19,7 +19,7 @@
   }
   
   .nav-link.active {
-    color: black;
+    color: rgb(130, 101, 101);
   }
   
   .nav-link.active::after {
@@ -56,7 +56,7 @@
 }
 
 .link{
-    color: rgb(157, 157, 240);
+    color: #9d9df0 !important;
 }
 
 
@@ -133,11 +133,15 @@
     display: flex;
     list-style: none;
     gap: 4rem;
-    margin-left: 340PX;
+    margin-left: 160PX;
     font-size: 22px;
     font-family: 'Poppins', sans-serif;
     z-index: 999;
     margin-top: 10px;
     
 }
+.nav-link{
+  color: #9d9df0 !important;
+}
+
 }

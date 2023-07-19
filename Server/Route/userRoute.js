@@ -1,46 +1,62 @@
 
 
+
 const express = require('express');
 const router = express.Router();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-const User = require('../Models/usermodel')
+const User = require('../Models/usermodel');
+
+const JWT_SECRET = 'fgqgkqGKFJJGUGQfQq3655489798`2-`19`'; // Define your secret key
 
 router.post('/register', async (req, res) => {
-    const newuser = new User(req.body)
+  const { fname, lname, email, password, userType } = req.body;
 
-    try {
-        const user = await newuser.save()
-        res.send('user registered successfully')
-    } catch (error) {
-        console.error(error); // Log the error for debugging purposes
-        return res.status(400).json({ message: 'An error occurred during registration. Please try again later.' })
+  const encryptedPassword = await bcrypt.hash(password, 10);
+  try {
+    const oldUser = await User.findOne({ email });
+
+    if (oldUser) {
+      return res.json({ error: "User Exists" });
     }
-})
+
+    await User.create({
+      fname,
+      lname,
+      email,
+      password: encryptedPassword,
+      userType,
+    });
+    res.json({ status: "ok" });
+  } catch (error) {
+    res.json({ status: "error" });
+  }
+});
 
 router.post('/login', async (req, res) => {
-    const { email, password } = req.body
+  const { email, password } = req.body;
+ 
+  const user = await User.findOne({ email  });
+  if (!user) {
+    return res.json({ error: "User Not found" });
+  }
+  if (await bcrypt.compare(password, user.password)) {
+    const token = jwt.sign({ email: user.email }, JWT_SECRET, {
+      expiresIn: "15m",
+    });
+    const currentUser = {
+        name: user.fname,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        _id: user._id,
+      };
+      console.log(currentUser)
+      return res.json({ status: "ok", data: { token, currentUser } });
+  
+  }
 
-    try {
-        const user = await User.find({  email, password })
-        if(user.length > 0)
-        {
-            const currentUser = {
-                name : user[0].name , 
-                email : user[0].email, 
-                isAdmin : user[0].isAdmin, 
-                _id : user[0]._id
-            }
-            res.send(currentUser);
-        }
-         else {
-            return res.status(400).json({ message: 'Login failed. User not found.' })
-        }
-    } catch (error) {
+  res.json({ status: "error", error: "Invalid Password" });
+});
 
-        return res.status(400).json({ message: 'An error occurred during login. Please try again later.' })
-    }
-})
-
-module.exports = router
-
-
+module.exports = router;

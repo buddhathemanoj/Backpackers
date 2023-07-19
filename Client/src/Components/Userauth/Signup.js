@@ -5,20 +5,21 @@ import { Success } from "../Hostelrooms/Success";
 import axios from "axios";
 
 export const Signup = () => {
-  const [name, setName] = useState("");
+  const [fname, setFname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cpass, setCpass] = useState("");
+  const [lname, setLname] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
  const [success , setSuccess] = useState();
   async function handleRegisterr() {
-    if (password === cpass) {
+    if (password >=0) {
       const user = {
-        name,
+        fname,
+        lname,
         email,
         password,
-        cpass,
+        
       }
       try {
         setLoading(true)
@@ -26,10 +27,10 @@ export const Signup = () => {
         setLoading(false)
         setSuccess(true)
 
-        setName('')
+        setFname('')
         setEmail('')
         setPassword('')
-        setCpass('')
+        setLname('')
 
       } catch (error) {
         console.log(error);
@@ -58,16 +59,25 @@ export const Signup = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="name"
-              value={name}
+              placeholder="first-name"
+              value={fname}
               onChange={(e) => {
-                setName(e.target.value);
+                setFname(e.target.value);
               }}
             />
             <input
               type="text"
               className="form-control"
-              placeholder="email"
+              placeholder="last name"
+              value={lname}
+              onChange={(e) => {
+                setLname(e.target.value);
+              }}
+            />
+            <input
+              type="text"
+              className="form-control"
+              placeholder="enter your email"
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -76,21 +86,13 @@ export const Signup = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="password"
+              placeholder="enter your password"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
             />
-            <input
-              type="text"
-              className="form-control"
-              placeholder="confirm password"
-              value={cpass}
-              onChange={(e) => {
-                setCpass(e.target.value);
-              }}
-            />
+          
             <button className="btn btn-primary" onClick={handleRegisterr}>
               Signup
             </button>

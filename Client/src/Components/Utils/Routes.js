@@ -14,13 +14,14 @@ import { Register } from "../Pages/Register.js";
 import { Bookingscreen } from "../Hostelrooms/Bookingscreen";
 import { Signup } from "../Userauth/Signup";
 function Routesmain (){
+  
     return(
 <div>
   
   <BrowserRouter>
     
         <Routes>
-        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/home" element={ <Home/> } />
           <Route exact path="/destinations" element={<Destinations />} />
           <Route exact path="/hostels" element={<Hostels />} />
           <Route exact path="/workations" element={<Workations />} />
