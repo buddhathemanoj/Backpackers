@@ -1,17 +1,33 @@
 
 
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../Styles/Bookroom.css'
 import { Loader } from './Loader';
 import { Error } from '@mui/icons-material';
+import moment from 'moment';
+
+
+
 export const Bookingscreen = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [room, setRoom] = useState(null); 
   const { roomid } = useParams();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const fromdate = queryParams.get('fromdate');
+  const todate = queryParams.get('todate');
 
+ 
+ 
+  const date1 = moment(fromdate, 'DD-MM-YYYY');
+  const date2 = moment(todate, 'DD-MM-YYYY');
+  const totaldays = date2.diff(date1, 'days');
+  console.log(totaldays)
   useEffect(() => {
     const fetchRoom = async () => {
       try {
@@ -54,8 +70,8 @@ export const Bookingscreen = () => {
               <hr/>
               <b>
               <p>Name: Manoj Prabhakar</p>
-              <p>From Date : </p>
-              <p>To Date :</p>
+              <p>From Date : {fromdate} </p>
+              <p>To Date :{todate}</p>
               <p> Max Count : {room.maxcount}</p>
 
              </b> 
@@ -63,7 +79,7 @@ export const Bookingscreen = () => {
 <div >
     <h1>  Checkout Price</h1>
     <hr/>
- <p>Total Days:</p>
+ <p>Total Days: {totaldays}</p>
  <p>Rent per Day:{room.rentperday}</p>
  <p>Total Amount</p>
     </div>
