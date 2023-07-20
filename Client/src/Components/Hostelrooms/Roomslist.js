@@ -1,9 +1,10 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "../Styles/Bookroom.css";
 import { Modal, Button, Carousel } from "react-bootstrap";
-import moment from "moment";
+
 
 
 export const Roomslist = ({ room , fromdate, todate }) => {
@@ -12,7 +13,7 @@ export const Roomslist = ({ room , fromdate, todate }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const formatDate = (date) => moment(date, 'DD-MM-YYYY').format('DD-MM-YYYY');
+
 
 
   return (
@@ -29,9 +30,9 @@ export const Roomslist = ({ room , fromdate, todate }) => {
         <p>Max Count :{room.maxcount}</p>
         <p>Rent/Day : {room.rentperday}</p>
         <div className="buttonss" style={{ float: "right" }}>
-          <Link to={'/book/'+room._id +'/from' + formatDate(fromdate) + '/to' + formatDate(todate)}>
-            <button className=" btn-primary">Book Now</button>
-          </Link>
+        <Link to={'/book/' + room._id + '?fromdate=' + fromdate + '&todate=' + todate}>
+  <button className="btn-primary">Book Now</button>
+</Link>
           <button className="btn-primary " onClick={handleShow}>
             {" "}
             View Details

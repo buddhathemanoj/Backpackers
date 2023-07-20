@@ -4,12 +4,15 @@ const app = express();
 const dbConfig = require('./db')
 const rooomsRoute = require('./Route/roomsRoute');
 const usersRoute = require('./Route/userRoute')
+const bookingsRoute =require('./Route/bookingsRoute')
+
 
 app.use(cors("*"));
 app.use(express.json())
+
 app.use('/api/rooms', rooomsRoute )
 app.use('/api/users', usersRoute )
-
+app.use ('/api/bookings' , bookingsRoute)
 
 
   

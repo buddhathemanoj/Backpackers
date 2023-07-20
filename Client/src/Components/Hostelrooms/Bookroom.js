@@ -1,10 +1,11 @@
+
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../Styles/Bookroom.css";
 import { Roomslist } from "./Roomslist";
 import { Loader } from "./Loader";
 import { Link } from 'react-router-dom';
-
 import moment from 'moment'
 import { DatePicker, Space } from 'antd';
 
@@ -79,5 +80,3 @@ setTodate((dates[1]).format('DD-MM-YYYY'))
     </div>
   );
 };
-
-
