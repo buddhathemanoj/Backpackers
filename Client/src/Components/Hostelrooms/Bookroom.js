@@ -3,6 +3,7 @@ import axios from "axios";
 import "../Styles/Bookroom.css";
 import { Roomslist } from "./Roomslist";
 import { Loader } from "./Loader";
+import { Link } from 'react-router-dom';
 
 import moment from 'moment'
 import { DatePicker, Space } from 'antd';
@@ -15,13 +16,17 @@ export const Bookroom = () => {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState();
   const [error, setError] = useState();
-  
+
 const { RangePicker } = DatePicker;
+ const[fromdate ,setFromdate]= useState();
+  const [todate , setTodate]=useState();
+
 
 function filterByDate(dates)
 {
-console.log(moment(dates[0]).format('DD-MM-YYYY'))
-console.log(moment(dates[1]).format('DD-MM-YYYY'))
+  setFromdate((dates[0]).format('DD-MM-YYYY'))
+setTodate((dates[1]).format('DD-MM-YYYY'))
+
 }
 
   useEffect(() => {
@@ -64,7 +69,7 @@ console.log(moment(dates[1]).format('DD-MM-YYYY'))
               <div className="col-md-9 mt-5">
 
 
-                <Roomslist room={room} />
+                <Roomslist room={room}  fromdate={fromdate} todate={todate}/>
               </div>
             
             );
