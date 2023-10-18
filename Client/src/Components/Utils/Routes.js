@@ -13,6 +13,7 @@ import { Agra } from "../Pages/Agra";
 import { Register } from "../Pages/Register.js";
 import { Bookingscreen } from "../Hostelrooms/Bookingscreen";
 import { Signup } from "../Userauth/Signup";
+import { Smarttv } from "../Ariyanka/Smarttv";
 function Routesmain (){
   
     return(
@@ -23,6 +24,9 @@ function Routesmain (){
         <Routes>
         <Route exact path="/" element={ <Home/> } />
         <Route exact path="/home" element={ <Home/> } />
+
+        <Route exact path="/smarttv" element={ <Smarttv/> } />
+
           {/* <Route exact path="/destinations" element={<Destinations />} />
           <Route exact path="/hostels" element={<Hostels />} />
           <Route exact path="/workations" element={<Workations />} />
