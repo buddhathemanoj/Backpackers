@@ -23,7 +23,7 @@ function Routesmain (){
         <Routes>
         <Route exact path="/" element={ <Home/> } />
         <Route exact path="/home" element={ <Home/> } />
-          <Route exact path="/destinations" element={<Destinations />} />
+          {/* <Route exact path="/destinations" element={<Destinations />} />
           <Route exact path="/hostels" element={<Hostels />} />
           <Route exact path="/workations" element={<Workations />} />
           <Route exact path="/membership" element={<Membership />} />
@@ -33,7 +33,7 @@ function Routesmain (){
           <Route exact path="/register" element={<Register />} />
           <Route path="/book/:roomid" element={<Bookingscreen />} />
           <Route exact path="/login" element={<Login />} />
-          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/signup" element={<Signup />} /> */}
          
 
 
